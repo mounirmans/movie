@@ -12,6 +12,12 @@ const Navbar: React.FC = () => {
           <Link to="/" className="text-gray-300 hover:text-white mx-2">
             Home
           </Link>
+          <Link to="/About" className="text-gray-300 hover:text-white mx-2">
+            About us
+          </Link>
+          <Link to="/Contact" className="text-gray-300 hover:text-white mx-2">
+            Contact us
+          </Link>
           {/* Add more links here if needed */}
         </div>
       </div>
