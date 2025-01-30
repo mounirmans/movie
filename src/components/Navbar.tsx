@@ -9,9 +9,7 @@ const Navbar: React.FC = () => {
           MovieApp
         </Link>
         <div>
-          <Link to="/" className="text-gray-300 hover:text-white mx-2">
-            Home
-          </Link>
+       
           <Link to="/About" className="text-gray-300 hover:text-white mx-2">
             About us
           </Link>
