@@ -59,13 +59,13 @@ const MovieDetails: React.FC = () => {
 
   const scrollLeft = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -320, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: -200, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 320, behavior: 'smooth' });
+      scrollRef.current.scrollBy({ left: 200, behavior: 'smooth' });
     }
   };
 
