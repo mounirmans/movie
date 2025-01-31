@@ -132,9 +132,9 @@ const MovieDetails: React.FC = () => {
           <button onClick={scrollLeft} className="text-white bg-gray-700 hover:bg-gray-600 rounded-full p-2 mr-2">
             &lt; {/* Left Arrow */}
           </button>
-          <div ref={scrollRef} className="flex overflow-x-auto scrollbar-hide">
+          <div ref={scrollRef} className="flex overflow-x-hidden scrollbar-hide">
             {similarMovies.map(similar => (
-              <div key={similar.id} className="flex-shrink-0 p-2 max-h-full min-h-full w-64 ">
+              <div key={similar.id} className="flex-shrink-0 p-2 max-h-full min-h-full  ">
                 <MovieCard movie={similar} />
               </div>
             ))}

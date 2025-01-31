@@ -56,7 +56,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({ searchTerm }) => {
   useEffect(() => {
     const fetchMovies = async () => {
       const data = await getPopularMovies();
-      setMovies(data.results);
+      setMovies(data?.results);
       setLoading(false);
     };
     fetchMovies();
@@ -65,7 +65,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({ searchTerm }) => {
   if (loading) return <div>Loading...</div>;
 
   // Filter movies based on the search term
-  const filteredMovies = movies.filter(movie =>
+  const filteredMovies = movies?.filter(movie =>
     movie.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
