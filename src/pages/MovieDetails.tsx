@@ -106,7 +106,7 @@ const MovieDetails: React.FC = () => {
     <div className="bg-gray-900 min-h-screen p-4">
       <Link to="/" className="text-white mb-4 inline-block hover:underline">Back to Home</Link>
       <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-        <h1 className="text-3xl font-bold text-white">{movie.title}</h1>
+        <h1 className="text-3xl font-bold text-center text-white">{movie.title}</h1>
         <div className='flex flex-col md:flex-row mt-4'>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

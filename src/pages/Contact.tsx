@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faTwitter, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../components/ThemeContext';
 
 const Contact: React.FC = () => {
+    const { theme } = useTheme(); // Get theme and toggle function
+  
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -24,73 +27,78 @@ const Contact: React.FC = () => {
       };
     
   return (
-    <div className='bg-gray-800'>
-    <div className="max-w-2xl mx-auto p-6 bg-gray-900 shadow-lg rounded-lg">
-    <Link to="/" className="text-white mb-4 inline-block hover:underline">Back to Home</Link>
+    <div className={` p-4 ${theme === 'DarkBlue' ? 'bg-accent' : 'bg-secondarylight'}`}>
+    <div className={`max-w-2xl mx-auto p-6 shadow-lg rounded-lg ${theme === 'DarkBlue' ? 'bg-secondarylight' : 'bg-secondarydark'}`}>
+    <Link to="/" className={` mb-4 inline-block hover:underline ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Back to Home</Link>
 
-      <h1 className="text-4xl font-bold text-gray-200 mb-6 text-center">Contact Us</h1>
+      <h1 className={`text-4xl font-bold mb-6 text-center ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Contact Us</h1>
       
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-300 mb-4">Get in Touch</h2>
-        <p className="text-lg text-gray-500 mb-2">Feel free to reach out to us through any of the following methods:</p>
-        <p className="text-lg text-gray-300 mb-2"><strong>Contact Number:</strong> 0096181974318</p>
+        <h2 className={`text-2xl font-semibold text-gray-300 mb-4 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Get in Touch</h2>
+        <p className={`text-lg ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Feel free to reach out to us through any of the following methods:</p>
+        <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+
+        <p className={`text-lg text-gray-300 mb-2 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}><strong>Contact Number:</strong> 0096181974318</p>
       </div>
+      <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
 
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-300 mb-4">Follow Us</h2>
+        <h2 className={`text-2xl font-semibold text-gray-300 mb-4 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Follow Us</h2>
         <ul className="flex space-x-4">
           <li>
-            <a
-              href="https://www.instagram.com"
+            <Link
+              to="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-500 hover:text-blue-700 transition-colors"
+              className={`flex items-center  transition-colors ${theme === 'DarkBlue' ? 'text-secondarydark  hover:text-blue-700' : 'text-secondarylight  hover:text-blue-700'}`}
             >
               <FontAwesomeIcon icon={faInstagram} className="mr-2" />
               Instagram
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="https://www.facebook.com"
+            <Link
+              to="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-500 hover:text-blue-700 transition-colors"
+              className={`flex items-center  transition-colors ${theme === 'DarkBlue' ? 'text-secondarydark  hover:text-blue-700' : 'text-secondarylight  hover:text-blue-700'}`}
             >
               <FontAwesomeIcon icon={faFacebook} className="mr-2" />
               Facebook
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="https://www.twitter.com"
+            <Link
+              to="https://www.twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-500 hover:text-blue-700 transition-colors"
+              className={`flex items-center  transition-colors ${theme === 'DarkBlue' ? 'text-secondarydark  hover:text-blue-700' : 'text-secondarylight  hover:text-blue-700'}`}
             >
               <FontAwesomeIcon icon={faTwitter} className="mr-2" />
               Twitter
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="https://www.tiktok.com"
+            <Link
+              to="https://www.tiktok.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-blue-500 hover:text-blue-700 transition-colors"
+              className={`flex items-center  transition-colors ${theme === 'DarkBlue' ? 'text-secondarydark  hover:text-blue-700' : 'text-secondarylight  hover:text-blue-700'}`}
             >
               <FontAwesomeIcon icon={faTiktok} className="mr-2" />
               TikTok
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
+      <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
+
 
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-300 mb-4">Send Us a Message</h2>
+        <h2 className={`text-2xl font-semibold mb-4 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`}>Send Us a Message</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="name">
+            <label className={`block  text-sm font-bold mb-2 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`} htmlFor="name">
               Name
             </label>
             <input
@@ -104,8 +112,8 @@ const Contact: React.FC = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="email">
-              Email
+          <label className={`block  text-sm font-bold mb-2 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`} htmlFor="name">
+          Email
             </label>
             <input
               type="email"
@@ -118,7 +126,7 @@ const Contact: React.FC = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-400 text-sm font-bold mb-2" htmlFor="message">
+          <label className={`block  text-sm font-bold mb-2 ${theme === 'DarkBlue' ? 'text-secondarydark' : 'text-secondarylight'}`} htmlFor="name">
               Message
             </label>
             <textarea
