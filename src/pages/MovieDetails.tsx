@@ -45,6 +45,7 @@ import { useParams, Link } from 'react-router-dom';
 import { getMovieById, getSimilarMovies } from '../api/tmdbApi';
 import MovieCard from '../components/MovieCard';
 import Footer from '../components/Footer';
+import { useTheme } from '../components/ThemeContext';
 
 const MovieDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // Get the movie ID from the URL
@@ -53,6 +54,8 @@ const MovieDetails: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [similarMovies, setSimilarMovies] = useState<any[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme(); // Get theme and toggle function
+  
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -103,10 +106,10 @@ const MovieDetails: React.FC = () => {
   if (error) return <div className="text-red-500">{error}</div>;
 
   return (
-    <div className="bg-gray-900 min-h-screen p-4">
-      <Link to="/" className="text-white mb-4 inline-block hover:underline">Back to Home</Link>
-      <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
-        <h1 className="text-3xl font-bold text-center text-white">{movie.title}</h1>
+    <div className={` min-h-screen p-4 ${theme === 'DarkBlue' ? 'bg-accent' : 'bg-secondarylight'}`}>
+      <Link to="/" className={` mb-4 inline-block hover:underline ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Back to Home</Link>
+      <div className={` rounded-lg p-6 shadow-lg ${theme === 'DarkBlue' ? 'bg-primarydark' : 'bg-primarylight'}`}>
+        <h1 className={`text-3xl font-bold text-center ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>{movie.title}</h1>
         <div className='flex flex-col md:flex-row mt-4'>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -114,24 +117,24 @@ const MovieDetails: React.FC = () => {
             className="object-cover rounded-lg w-full md:w-1/4" // Responsive width
           />
           <div className="md:ml-6 mt-4 md:mt-0">
-            <p className="text-gray-400 pl-16 mt-10">Rating: {renderStars(movie.vote_average)} ({movie.vote_average}/10)</p>
-            <p className="text-gray-400 pl-16 mt-10">Release Date: {movie.release_date}</p>
-            <p className="text-gray-400 pl-16 mt-10">Genres: {movie.genres.map((genre: { name: any; }) => genre.name).join(', ')}</p>
-            <p className="text-gray-300 pl-16 mt-20">Overview:</p>
-            <p className="text-gray-300 pl-16 mt-5  ">{movie.overview}</p>
+            <p className={` pl-16 mt-10 ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Rating: {renderStars(movie.vote_average)} ({movie.vote_average}/10)</p>
+            <p className={` pl-16 mt-10 ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Release Date: {movie.release_date}</p>
+            <p className={` pl-16 mt-10 ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Genres: {movie.genres.map((genre: { name: any; }) => genre.name).join(', ')}</p>
+            <p className={` pl-16 mt-10 ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Overview:</p>
+            <p className={` pl-16 mt-10 ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>{movie.overview}</p>
           </div>
         </div>
       </div>
       <div className="mt-8">
         
-        <h2 className="text-xl font-bold text-white mb-4">Similar Movies</h2>
-        <div className="flex items-center">
+      <h2 className={`text-xl font-bold  mb-4  ${theme === 'DarkBlue' ? 'text-secondarylight' : 'text-primarydark'}`}>Similar Movies</h2>
+      <div className="flex items-center">
           <button onClick={scrollLeft} className="text-white bg-gray-700 hover:bg-gray-600 rounded-full p-2 mr-2">
             &lt; {/* Left Arrow */}
           </button>
           <div ref={scrollRef} className="flex overflow-x-auto scrollbar-hide">
             {similarMovies.map(similar => (
-              <div key={similar.id} className="flex-shrink-0 w-80 ">
+              <div key={similar.id} className="flex-shrink-0 p-2 max-h-full min-h-full w-64 ">
                 <MovieCard movie={similar} />
               </div>
             ))}
