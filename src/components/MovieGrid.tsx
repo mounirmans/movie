@@ -36,7 +36,7 @@ const MovieGrid: React.FC<MovieGridProps> = ({ searchTerm }) => {
   
     return (
       <div className='md:container mx-auto px-2'>
-        <div className=" grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredMovies.length > 0 ? (
             filteredMovies.map(movie => (
               <div key={movie.id} className="p-3"> {/* Add padding around each MovieCard */}
