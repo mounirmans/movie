@@ -5,8 +5,8 @@ import { useTheme } from './ThemeContext';
 const Footer: React.FC = () => {
     const { theme } = useTheme(); // Get theme and toggle function
   return (
-    <div>
-    <footer className={`bg-gray-800 p-4 mt-4  ${theme === 'DarkBlue' ? 'bg-primarydark' : 'bg-primarylight' }`}>
+    <div className={`${theme === 'DarkBlue' ? 'bg-primarydark' : 'bg-primarylight' }`}>
+    <footer className={` p-6   ${theme === 'DarkBlue' ? 'bg-primarydark' : 'bg-primarylight' }`}>
       <div className={`container mx-auto text-center  ${theme === 'DarkBlue' ? 'bg-primarydark text-primarylight' :'bg-primarylight text-primarydark' }`}>
         <p>&copy; {new Date().getFullYear()} MovieApp. All rights reserved.</p>
         <p>

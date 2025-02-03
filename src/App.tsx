@@ -29,6 +29,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Navbar from '../src/components/Navbar'; // Import the Navbar
 import { ThemeProvider } from '../src/components/ThemeContext'; // Import the ThemeProvider
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
       </Routes>
+      <Footer/>
     </ThemeProvider>
   );
 }

@@ -1,50 +1,8 @@
-// import React, { useEffect, useState } from 'react';
-// import { useParams } from 'react-router-dom';
-// import { getMovieById, getSimilarMovies } from '../api/tmdbApi';
-// import MovieCard from '../components/MovieCard';
-
-// const MovieDetails: React.FC = () => {
-//   const { id } = useParams<{ id: string }>();
-//   const [movie, setMovie] = useState<any>(null);
-//   const [similarMovies, setSimilarMovies] = useState<any[]>([]);
-//   const [loading, setLoading] = useState<boolean>(true);
-
-//   useEffect(() => {
-//     const fetchMovieDetails = async () => {
-//       const movieData = await getMovieById(Number(id));
-//       const similarData = await getSimilarMovies(Number(id));
-//       setMovie(movieData);
-//       setSimilarMovies(similarData.results);
-//       setLoading(false);
-//     };
-//     fetchMovieDetails();
-//   }, [id]);
-
-//   if (loading) return <div>Loading...</div>;
-
-//   return (
-//     <div className="container mx-auto p-4">
-//       <h1 className="text-2xl font-bold text-white">{movie.title}</h1>
-//       <p className="text-gray-400">{movie.overview}</p>
-//       <h2 className="text-xl font-bold text-white mt-4">Similar Movies</h2>
-//       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-//         {similarMovies.map(similar => (
-//           <MovieCard key={similar.id} movie={similar} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MovieDetails;
-
-
 
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getMovieById, getSimilarMovies } from '../api/tmdbApi';
 import MovieCard from '../components/MovieCard';
-import Footer from '../components/Footer';
 import { useTheme } from '../components/ThemeContext';
 
 const MovieDetails: React.FC = () => {
@@ -144,7 +102,7 @@ const MovieDetails: React.FC = () => {
           </button>
         </div>
       </div>
-      <Footer/>
+      
 
     </div>
     

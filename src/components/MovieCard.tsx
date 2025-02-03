@@ -19,7 +19,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   
   return (
     
-    <Link to={`/movie/${movie.id}`} className={`h-full block w-72 `}>
+    <Link to={`/movie/${movie.id}`} className={`h-full block w-auto `}>
       <div className={` rounded-lg overflow-hidden w-full h-full shadow-lg ${theme === 'DarkBlue' ? 'bg-secondarydark' : 'bg-secondarylight'}`}>
         <img className='h- w-full object-cover' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
         <div className={`p-4  ${theme === 'DarkBlue' ? 'bg-secondarydark' : 'bg-secondarylight'} `}>
